@@ -1,0 +1,88 @@
+
+/* ========================================
+   CINEPASSE - ESTILOS GLOBAIS
+======================================== */
+
+:root {
+    /* Paleta principal */
+    --color-background: #0B0F17;
+    --color-surface: #1E293B;
+    --color-surface-light: #263449;
+    --color-primary: #FF6B00;
+    --color-primary-hover: #E85F00;
+
+    /* Textos */
+    --color-text: #F5F5F5;
+    --color-text-secondary: #AAB4C3;
+    --color-text-muted: #788496;
+
+    /* Bordas e estados */
+    --color-border: #344155;
+    --color-error: #FF5B64;
+    --color-success: #39C98A;
+
+    /* Tipografia */
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* Formas e transições */
+    --radius-small: 10px;
+    --radius-medium: 16px;
+    --radius-large: 22px;
+    --transition: 180ms ease;
+}
+
+/* Reset */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    min-width: 320px;
+    scroll-behavior: smooth;
+}
+
+body {
+    min-width: 320px;
+    min-height: 100vh;
+    min-height: 100svh;
+    background: var(--color-background);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button:focus-visible,
+input:focus-visible,
+a:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 3px;
+}
+
+img,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+#app {
+    min-height: 100vh;
+    min-height: 100svh;
+}
