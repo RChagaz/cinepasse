@@ -600,3 +600,116 @@
         transition-duration: 0.01ms;
     }
 }
+
+
+/* ========================================
+   IMAGENS REAIS DOS PÔSTERES
+======================================== */
+
+.movie-poster img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+}
+
+/* ========================================
+   BANNER EM DESTAQUE
+======================================== */
+
+.featured-banner {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    min-height: 300px;
+    overflow: hidden;
+    border-radius: 17px;
+    isolation: isolate;
+    background: #06172A;
+}
+
+/* Imagem de fundo do destaque */
+
+.featured-image {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Gradiente para melhorar a leitura do texto */
+
+.featured-banner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: linear-gradient(
+        90deg,
+        rgba(3, 13, 25, 0.95) 0%,
+        rgba(3, 13, 25, 0.78) 45%,
+        rgba(3, 13, 25, 0.35) 75%,
+        rgba(3, 13, 25, 0.12) 100%
+    );
+}
+
+/* Conteúdo do banner */
+
+.featured-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(
+        0deg,
+        rgba(3, 13, 25, 0.35),
+        transparent 65%
+    );
+}
+
+.featured-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 310px;
+    padding: 24px 16px 20px;
+}
+
+/* ========================================
+   INDICADORES DO BANNER
+======================================== */
+
+/* Ocultar enquanto houver apenas um destaque */
+
+.carousel-indicators {
+    display: none;
+}
+
+/* ========================================
+   AJUSTES PARA TELAS MAIORES
+======================================== */
+
+@media (min-width: 500px) {
+    .featured-banner {
+        min-height: 340px;
+    }
+}
+
+/* ========================================
+   MOVIMENTO REDUZIDO
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .home-screen *,
+    .home-screen *::before,
+    .home-screen *::after {
+        scroll-behavior: auto;
+        transition-duration: 0.01ms;
+    }
+}

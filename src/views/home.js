@@ -53,10 +53,16 @@ function movieCard(movie) {
     return `
         <a class="movie-card" href="/movie?id=${movie.id}"
            aria-label="Ver detalhes de ${movie.title}">
-            <div class="movie-poster poster-${movie.art}">
-                <span class="poster-title">${movie.title}</span>
+            <div class="movie-poster">
+                <img
+                    src="/images/posters/${movie.art}.webp"
+                    alt="Pôster de ${movie.title}"
+                    loading="lazy"
+                />
             </div>
+
             <span class="movie-title">${movie.title}</span>
+
             <span class="movie-rating">
                 <span class="rating-star">★</span>
                 ${movie.rating}
@@ -139,28 +145,47 @@ export function renderHome() {
                 </div>
             </header>
 
-            <section class="featured-section"
-                     aria-label="Filme em destaque">
-                <div class="featured-banner">
-                    <div class="featured-overlay"></div>
+            
+<section class="featured-section"
+         aria-label="Filme em destaque">
 
-                    <div class="featured-content">
-                        <span class="featured-badge">EM DESTAQUE</span>
+    <div class="featured-banner">
+        <img
+            class="featured-image"
+            src="/images/banners/interestelar.jpg"
+            alt=""
+            aria-hidden="true"
+        />
 
-                        <h1>Interestelar</h1>
+        <div class="featured-overlay"></div>
 
-                        <p>
-                            Uma jornada épica através do espaço
-                            e do tempo.
-                        </p>
+        <div class="featured-content">
+            <span class="featured-badge">EM DESTAQUE</span>
 
-                        <a href="/movie?id=interestelar"
-                           class="featured-button">
-                            ${icon("play", 20)}
-                            <span>Assistir trailer</span>
-                        </a>
-                    </div>
-                </div>
+            <h1>Interestelar</h1>
+
+            <p>
+                Uma jornada épica através do espaço
+                e do tempo.
+            </p>
+
+            <a href="/movie?id=interestelar"
+               class="featured-button">
+                ${icon("play", 20)}
+                <span>Assistir trailer</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="carousel-indicators"
+         aria-label="Destaque 1 de 4">
+        <span class="indicator active"></span>
+        <span class="indicator"></span>
+        <span class="indicator"></span>
+        <span class="indicator"></span>
+    </div>
+
+</section>
 
                 <div class="carousel-indicators"
                      aria-label="Destaque 1 de 4">
