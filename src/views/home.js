@@ -1,17 +1,13 @@
 
-const trendingMovies = [
-    { id: "duna", title: "Duna", rating: "8.2", art: "duna", year: "2024" },
-    { id: "batman", title: "Batman", rating: "8.5", art: "batman", year: "2022" },
-    { id: "oppenheimer", title: "Oppenheimer", rating: "8.4", art: "oppenheimer", year: "2023" },
-    { id: "top-gun", title: "Top Gun Maverick", rating: "8.3", art: "topgun", year: "2022" }
-];
+import { movies } from "../js/data.js";
 
-const newReleases = [
-    { id: "deadpool", title: "Deadpool & Wolverine", rating: "8.1", art: "deadpool", year: "2024" },
-    { id: "divertida-mente", title: "Divertida Mente 2", rating: "8.0", art: "insideout", year: "2024" },
-    { id: "gladiador", title: "Gladiador II", rating: "7.8", art: "gladiator", year: "2024" },
-    { id: "godzilla", title: "Godzilla e Kong", rating: "7.6", art: "godzilla", year: "2024" }
-];
+const trendingMovies = movies.filter(movie =>
+    ["duna", "batman", "oppenheimer", "top-gun"].includes(movie.id)
+);
+
+const newReleases = movies.filter(movie =>
+    ["deadpool", "divertida-mente", "gladiador", "godzilla"].includes(movie.id)
+);
 
 const genres = [
     { name: "Ação", icon: "clapperboard", id: "acao" },
