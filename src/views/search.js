@@ -1,3 +1,5 @@
+import { movies } from "../js/data.js";
+
 const recentSearches = [
     "Interestelar",
     "Batman",
@@ -6,28 +8,9 @@ const recentSearches = [
     "Duna"
 ];
 
-const suggestions = [
-    {
-        title: "Interestelar",
-        genre: "Ficção científica",
-        poster: "interestelar.webp"
-    },
-    {
-        title: "Duna",
-        genre: "Ficção científica",
-        poster: "duna.webp"
-    },
-    {
-        title: "Batman",
-        genre: "Ação",
-        poster: "batman.webp"
-    },
-    {
-        title: "Oppenheimer",
-        genre: "Drama",
-        poster: "oppenheimer.webp"
-    }
-];
+const suggestions = movies.filter(movie =>
+    ["interestelar", "duna", "batman", "oppenheimer"].includes(movie.id)
+);
 
 const categories = [
     { name: "Ação", icon: "clapperboard", id: "acao" },
@@ -143,7 +126,7 @@ function renderSuggestions() {
 
             <div class="search-movie-poster">
                 <img
-                    src="/images/posters/${movie.poster}"
+                    src="/images/posters/${movie.art}.webp"
                     alt="Pôster de ${movie.title}"
                     loading="lazy"
                 />
