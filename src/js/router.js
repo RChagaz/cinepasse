@@ -3,6 +3,7 @@ import { renderLogin } from "../views/login.js";
 import { renderHome } from "../views/home.js";
 import { renderMovie } from "../views/movie.js";
 import { renderSearch } from "../views/search.js";
+import { renderResults } from "../views/results.js";
 
 function renderPlaceholder(title, description) {
     const app = document.querySelector("#app");
@@ -77,10 +78,7 @@ export function router() {
             break;
 
         case "/results":
-            renderPlaceholder(
-                "Todos os filmes",
-                "Aqui você poderá explorar os filmes disponíveis no CinePasse."
-            );
+            renderResults();
             break;
 
         case "/list":

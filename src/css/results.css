@@ -1,0 +1,648 @@
+/* ========================================
+   CINEPASSE - RESULTADOS
+======================================== */
+
+.results-screen {
+    --results-bg: var(--color-background, #0B0F17);
+    --results-surface: var(--color-surface, #1E293B);
+    --results-border: var(--color-border, #334155);
+    --results-orange: var(--color-primary, #FF6B00);
+    --results-text: var(--color-text, #F5F5F5);
+    --results-muted: var(--color-text-secondary, #AAB4C3);
+
+    min-height: 100vh;
+    min-height: 100svh;
+
+    padding-bottom: calc(100px + env(safe-area-inset-bottom));
+
+    overflow-x: hidden;
+
+    background: var(--results-bg);
+    color: var(--results-text);
+}
+
+
+/* ========================================
+   CABEÇALHO
+======================================== */
+
+.results-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+
+    padding: 28px 20px 14px;
+}
+
+.results-back {
+    display: grid;
+    flex: 0 0 44px;
+
+    place-items: center;
+
+    width: 44px;
+    height: 44px;
+
+    margin-left: -10px;
+
+    border-radius: 50%;
+
+    color: var(--results-text);
+    text-decoration: none;
+}
+
+.results-back:active {
+    background: var(--results-surface);
+}
+
+.results-header h1 {
+    margin: 0;
+
+    font-family: var(--font-heading, "Poppins", sans-serif);
+    font-size: 29px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.results-header p {
+    margin-top: 5px;
+
+    color: var(--results-muted);
+
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+
+/* ========================================
+   CAMPO DE BUSCA
+======================================== */
+
+.results-search {
+    padding: 8px 20px 22px;
+}
+
+.results-search-form {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    min-height: 58px;
+
+    padding: 0 16px;
+
+    border: 1px solid #49627F;
+    border-radius: 17px;
+
+    background: #122033;
+}
+
+.results-search-form:focus-within {
+    border-color: var(--results-orange);
+
+    box-shadow:
+        0 0 0 3px rgba(255, 107, 0, 0.12);
+}
+
+.results-search-icon {
+    display: grid;
+
+    place-items: center;
+
+    color: #8EA3BE;
+}
+
+.results-search-form input {
+    width: 100%;
+
+    border: 0;
+    outline: 0;
+
+    background: transparent;
+
+    color: var(--results-text);
+
+    font-family: inherit;
+    font-size: 16px;
+}
+
+.results-search-form input::placeholder {
+    color: #7F8DA1;
+}
+
+
+/* Remove decoração padrão do search */
+
+.results-search-form input::-webkit-search-cancel-button {
+    cursor: pointer;
+}
+
+
+/* ========================================
+   RESUMO DOS RESULTADOS
+======================================== */
+
+.results-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+
+    padding: 0 20px;
+}
+
+.results-summary-text {
+    min-width: 0;
+}
+
+.results-summary h2 {
+    margin: 0;
+
+    font-family: var(--font-heading, "Poppins", sans-serif);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.35;
+}
+
+.results-summary h2 span {
+    color: var(--results-orange);
+}
+
+.results-summary p {
+    margin-top: 5px;
+
+    color: var(--results-muted);
+
+    font-size: 13px;
+}
+
+.results-filter-button {
+    display: flex;
+    flex: 0 0 auto;
+
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    min-height: 48px;
+
+    padding: 0 15px;
+
+    border: 1px solid var(--results-orange);
+    border-radius: 14px;
+
+    color: var(--results-text);
+
+    font-size: 13px;
+    font-weight: 600;
+
+    text-decoration: none;
+}
+
+.results-filter-button svg {
+    color: var(--results-orange);
+}
+
+.results-filter-button:active {
+    background: rgba(255, 107, 0, 0.1);
+}
+
+
+/* ========================================
+   ORDENAÇÃO
+======================================== */
+
+.results-sort {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    padding: 21px 20px 18px;
+
+    color: var(--results-muted);
+
+    font-size: 13px;
+}
+
+.results-select-wrapper {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+
+    border: 1px solid rgba(255, 107, 0, 0.75);
+    border-radius: 20px;
+
+    background: #101A29;
+
+    color: var(--results-orange);
+}
+
+.results-select-wrapper select {
+    min-height: 40px;
+
+    padding: 0 38px 0 15px;
+
+    border: 0;
+    outline: 0;
+
+    appearance: none;
+
+    background: transparent;
+
+    color: var(--results-orange);
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.results-select-wrapper svg {
+    position: absolute;
+
+    right: 12px;
+
+    pointer-events: none;
+}
+
+
+/* ========================================
+   GRADE DE FILMES
+======================================== */
+
+.results-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 14px;
+
+    padding: 0 20px 24px;
+}
+
+
+/* ========================================
+   CARD
+======================================== */
+
+.result-card {
+    display: flex;
+    min-width: 0;
+
+    flex-direction: column;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(80, 111, 151, 0.32);
+    border-radius: 14px;
+
+    background: #101C2C;
+
+    color: var(--results-text);
+
+    text-decoration: none;
+}
+
+.result-card-clickable {
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.result-card-clickable:hover {
+    transform: translateY(-3px);
+
+    border-color: rgba(255, 107, 0, 0.7);
+}
+
+
+/* ========================================
+   PÔSTER
+======================================== */
+
+.result-poster {
+    width: 100%;
+
+    aspect-ratio: 2 / 3;
+
+    overflow: hidden;
+
+    background: var(--results-surface);
+}
+
+.result-poster img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* ========================================
+   INFORMAÇÕES DO FILME
+======================================== */
+
+.result-movie-info {
+    display: flex;
+
+    flex: 1;
+
+    flex-direction: column;
+
+    padding: 11px 11px 13px;
+}
+
+.result-movie-info h3 {
+    display: -webkit-box;
+
+    margin: 0;
+
+    overflow: hidden;
+
+    color: var(--results-text);
+
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.35;
+
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+}
+
+.result-genre {
+    display: -webkit-box;
+
+    margin-top: 4px;
+
+    overflow: hidden;
+
+    color: var(--results-muted);
+
+    font-size: 11px;
+    line-height: 1.35;
+
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+}
+
+.result-meta {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    margin-top: 9px;
+
+    color: var(--results-muted);
+
+    font-size: 12px;
+}
+
+.meta-divider {
+    width: 1px;
+    height: 13px;
+
+    background: #526277;
+}
+
+.result-rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.result-rating strong {
+    color: var(--results-orange);
+
+    font-size: 14px;
+}
+
+
+/* ========================================
+   NENHUM RESULTADO
+======================================== */
+
+.results-empty {
+    grid-column: 1 / -1;
+
+    display: flex;
+
+    min-height: 330px;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px 20px;
+
+    text-align: center;
+}
+
+.results-empty-icon {
+    display: grid;
+
+    place-items: center;
+
+    width: 68px;
+    height: 68px;
+
+    margin-bottom: 18px;
+
+    border-radius: 50%;
+
+    background: var(--results-surface);
+
+    color: var(--results-muted);
+}
+
+.results-empty h2 {
+    font-family: var(--font-heading, "Poppins", sans-serif);
+    font-size: 20px;
+}
+
+.results-empty p {
+    max-width: 280px;
+
+    margin-top: 8px;
+
+    color: var(--results-muted);
+
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.results-empty a {
+    margin-top: 20px;
+
+    padding: 12px 18px;
+
+    border-radius: 12px;
+
+    background: var(--results-orange);
+
+    color: #FFFFFF;
+
+    font-weight: 600;
+
+    text-decoration: none;
+}
+
+
+/* ========================================
+   MENU INFERIOR
+======================================== */
+
+.results-screen .bottom-nav {
+    position: fixed;
+
+    z-index: 30;
+
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    min-height: 76px;
+
+    padding:
+        8px
+        8px
+        calc(8px + env(safe-area-inset-bottom));
+
+    border-top: 1px solid rgba(80, 111, 151, 0.4);
+
+    background: rgba(8, 17, 31, 0.97);
+
+    backdrop-filter: blur(16px);
+}
+
+.results-screen .nav-item {
+    display: flex;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    min-width: 0;
+
+    border-radius: 10px;
+
+    color: #9BAFCB;
+
+    font-size: 11px;
+
+    text-decoration: none;
+}
+
+.results-screen .nav-item.active {
+    color: var(--results-orange);
+}
+
+
+/* ========================================
+   ACESSIBILIDADE
+======================================== */
+
+.results-screen a:focus-visible,
+.results-screen select:focus-visible,
+.results-screen input:focus-visible {
+    outline: 2px solid var(--results-orange);
+    outline-offset: 3px;
+}
+
+
+/* ========================================
+   CELULARES MUITO PEQUENOS
+======================================== */
+
+@media (max-width: 360px) {
+
+    .results-header,
+    .results-search,
+    .results-summary,
+    .results-sort {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .results-grid {
+        gap: 10px;
+
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .results-summary h2 {
+        font-size: 18px;
+    }
+
+    .results-filter-button {
+        padding: 0 11px;
+    }
+
+    .results-sort {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+
+/* ========================================
+   DESKTOP / SIMULADOR
+======================================== */
+
+@media (min-width: 500px) {
+
+    .results-screen {
+        max-width: 600px;
+
+        margin: 0 auto;
+
+        border-right:
+            1px solid rgba(148, 163, 184, 0.12);
+
+        border-left:
+            1px solid rgba(148, 163, 184, 0.12);
+    }
+}
+
+
+/* ========================================
+   MOVIMENTO REDUZIDO
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .results-screen *,
+    .results-screen *::before,
+    .results-screen *::after {
+        transition-duration: 0.01ms;
+    }
+}
+
+/* Opções do seletor de ordenação */
+.results-select-wrapper select {
+    color-scheme: dark;
+}
+
+.results-select-wrapper select option {
+    background: #101A29;
+    color: #F5F5F5;
+}
+
+.results-select-wrapper select option:checked {
+    background: #1E293B;
+    color: #FF6B00;
+}

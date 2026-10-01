@@ -333,59 +333,62 @@ function setupSearchInteractions() {
     const recentContainer = document.querySelector(".recent-searches");
     const recentSection = document.querySelector(".recent-section");
 
+    // Mostra ou esconde o botão X conforme o usuário digita
     function updateClearButton() {
         clearButton.hidden = input.value.trim() === "";
     }
 
     input.addEventListener("input", updateClearButton);
 
+    // Limpar campo de pesquisa
     clearButton.addEventListener("click", () => {
         input.value = "";
         updateClearButton();
         input.focus();
     });
 
-    form.addEventListener("submit", event => {
+    // ========================================
+    // PESQUISA PRINCIPAL
+    // ========================================
+
+    form.addEventListener("submit", (event) => {
         event.preventDefault();
 
         const query = input.value.trim();
 
+        // Impede pesquisa vazia
         if (!query) {
             input.focus();
             return;
         }
 
-        window.history.pushState(
-            {},
-            "",
-            `/results?search=${encodeURIComponent(query)}`
-        );
-
-        window.dispatchEvent(new PopStateEvent("popstate"));
+        // Envia o termo pesquisado para a tela de resultados
+        window.location.href =
+            `/results?search=${encodeURIComponent(query)}`;
     });
+
+    // ========================================
+    // PESQUISAS RECENTES
+    // ========================================
 
     document
         .querySelectorAll(".recent-search")
-        .forEach(button => {
-
+        .forEach((button) => {
             button.addEventListener("click", () => {
                 const query = button.dataset.search;
 
                 input.value = query;
                 updateClearButton();
 
-                window.history.pushState(
-                    {},
-                    "",
-                    `/results?search=${encodeURIComponent(query)}`
-                );
-
-                window.dispatchEvent(
-                    new PopStateEvent("popstate")
-                );
+                // Também envia pesquisas recentes para Resultados
+                window.location.href =
+                    `/results?search=${encodeURIComponent(query)}`;
             });
-
         });
+
+    // ========================================
+    // LIMPAR PESQUISAS RECENTES
+    // ========================================
 
     clearRecents.addEventListener("click", () => {
         recentContainer.innerHTML = "";
