@@ -1,3 +1,5 @@
+import { featuredMovie } from "../js/data.js";
+
 const icons = {
     arrowLeft: `
         <path d="M19 12H5"/>
@@ -49,6 +51,9 @@ function icon(name, size = 24) {
 export function renderMovie() {
     const app = document.querySelector("#app");
 
+    // Dados do filme vindos do data.js
+    const movie = featuredMovie;
+
     app.innerHTML = `
         <main class="movie-screen">
 
@@ -69,7 +74,7 @@ export function renderMovie() {
                 <button
                     class="movie-header-bookmark"
                     type="button"
-                    aria-label="Adicionar Interestelar à minha lista"
+                    aria-label="Adicionar ${movie.title} à minha lista"
                 >
                     ${icon("bookmark", 26)}
                 </button>
@@ -83,7 +88,7 @@ export function renderMovie() {
 
                 <img
                     class="movie-backdrop"
-                    src="/images/banners/interestelar.jpg"
+                    src="${movie.banner}"
                     alt=""
                     aria-hidden="true"
                 />
@@ -99,25 +104,30 @@ export function renderMovie() {
 
                 <img
                     class="movie-detail-poster"
-                    src="/images/posters/interestelar.webp"
-                    alt="Pôster do filme Interestelar"
+                    src="${movie.poster}"
+                    alt="Pôster do filme ${movie.title}"
                 />
 
                 <div class="movie-info-text">
 
-                    <h2>Interestelar</h2>
+                    <h2>${movie.title}</h2>
 
                     <div class="movie-meta">
-                        <span>2014</span>
+                        <span>${movie.year}</span>
                         <span aria-hidden="true">•</span>
-                        <span>2h 49min</span>
+                        <span>${movie.duration}</span>
                         <span aria-hidden="true">•</span>
-                        <span>Ficção científica</span>
+                        <span>${movie.mainGenre}</span>
                     </div>
 
                     <div class="movie-age-rating">
-                        <span class="age-badge">12</span>
-                        <span>Não recomendado para menores de 12 anos</span>
+                        <span class="age-badge">
+                            ${movie.ageRating}
+                        </span>
+
+                        <span>
+                            ${movie.ageDescription}
+                        </span>
                     </div>
 
                 </div>
@@ -140,12 +150,18 @@ export function renderMovie() {
 
                     <div class="rating-value">
                         <span class="rating-star">★</span>
-                        <strong>8,7</strong>
-                        <span>/10</span>
+
+                        <strong>
+                            ${movie.imdb.score}
+                        </strong>
+
+                        <span>
+                            ${movie.imdb.maxScore}
+                        </span>
                     </div>
 
                     <span class="rating-description">
-                        Avaliação dos usuários
+                        ${movie.imdb.description}
                     </span>
 
                 </article>
@@ -159,11 +175,13 @@ export function renderMovie() {
                     </span>
 
                     <div class="rating-value">
-                        <strong>73%</strong>
+                        <strong>
+                            ${movie.rottenTomatoes.score}
+                        </strong>
                     </div>
 
                     <span class="rating-description">
-                        Tomatometer
+                        ${movie.rottenTomatoes.description}
                     </span>
 
                 </article>
@@ -186,7 +204,7 @@ export function renderMovie() {
                 <button
                     class="list-button"
                     type="button"
-                    aria-label="Adicionar à minha lista"
+                    aria-label="Adicionar ${movie.title} à minha lista"
                 >
                     ${icon("bookmark", 22)}
                     <span>Minha lista</span>
@@ -202,11 +220,7 @@ export function renderMovie() {
                 <h2>Sinopse</h2>
 
                 <p class="movie-synopsis">
-                    As reservas naturais da Terra estão chegando ao fim.
-                    Um grupo de astronautas recebe a missão de explorar
-                    possíveis planetas capazes de receber a humanidade,
-                    enquanto Cooper precisa deixar sua família para trás
-                    e embarcar em uma jornada através do espaço.
+                    ${movie.synopsis}
                 </p>
 
                 <button
@@ -238,21 +252,11 @@ export function renderMovie() {
 
                 <div class="cast-list">
 
-                    <span class="cast-member">
-                        Matthew McConaughey
-                    </span>
-
-                    <span class="cast-member">
-                        Anne Hathaway
-                    </span>
-
-                    <span class="cast-member">
-                        Jessica Chastain
-                    </span>
-
-                    <span class="cast-member">
-                        Michael Caine
-                    </span>
+                    ${movie.cast.map(actor => `
+                        <span class="cast-member">
+                            ${actor}
+                        </span>
+                    `).join("")}
 
                 </div>
 
@@ -269,19 +273,19 @@ export function renderMovie() {
 
                     <div>
                         <dt>Direção</dt>
-                        <dd>Christopher Nolan</dd>
+                        <dd>${movie.director}</dd>
                     </div>
 
                     <div>
                         <dt>Gêneros</dt>
                         <dd>
-                            Ficção científica, Drama e Aventura
+                            ${movie.genres.join(", ")}
                         </dd>
                     </div>
 
                     <div>
                         <dt>Lançamento</dt>
-                        <dd>2014</dd>
+                        <dd>${movie.year}</dd>
                     </div>
 
                 </dl>
@@ -312,13 +316,13 @@ export function renderMovie() {
                 </a>
 
                 <button
-            type="button"
-            class="nav-item nav-item-disabled"
-            aria-label="Minha Lista - recurso não implementado neste protótipo"
-            >
-            ${icon("bookmark", 25)}
-            <span>Minha Lista</span>
-            </button>
+                    type="button"
+                    class="nav-item nav-item-disabled"
+                    aria-label="Minha Lista - recurso não implementado neste protótipo"
+                >
+                    ${icon("bookmark", 25)}
+                    <span>Minha Lista</span>
+                </button>
 
             </nav>
 
@@ -333,14 +337,18 @@ function setupMovieInteractions() {
 
     /* Sinopse */
 
-    const synopsis = document.querySelector(".movie-synopsis");
-    const synopsisButton = document.querySelector(".synopsis-toggle");
+    const synopsis =
+        document.querySelector(".movie-synopsis");
+
+    const synopsisButton =
+        document.querySelector(".synopsis-toggle");
 
     synopsisButton?.addEventListener("click", () => {
 
         synopsis.classList.toggle("expanded");
 
-        const expanded = synopsis.classList.contains("expanded");
+        const expanded =
+            synopsis.classList.contains("expanded");
 
         synopsisButton.textContent =
             expanded ? "Ver menos" : "Ver mais";
