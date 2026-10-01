@@ -1,0 +1,634 @@
+/* ========================================
+   CINEPASSE - DETALHES DO FILME
+======================================== */
+
+.movie-screen {
+    --movie-bg: var(--color-background, #0B0F17);
+    --movie-surface: var(--color-surface, #1E293B);
+    --movie-border: var(--color-border, #334155);
+    --movie-orange: var(--color-primary, #FF6B00);
+    --movie-text: var(--color-text, #F5F5F5);
+    --movie-muted: var(--color-text-secondary, #AAB4C3);
+
+    min-height: 100vh;
+    min-height: 100svh;
+
+    padding-bottom: calc(
+        100px + env(safe-area-inset-bottom)
+    );
+
+    overflow-x: hidden;
+
+    background: var(--movie-bg);
+    color: var(--movie-text);
+}
+
+
+/* ========================================
+   CABEÇALHO
+======================================== */
+
+.movie-header {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+
+    display: grid;
+    grid-template-columns: 48px 1fr 48px;
+    align-items: center;
+
+    min-height: 70px;
+    padding: 10px 14px;
+
+    border-bottom: 1px solid
+        rgba(148, 163, 184, 0.12);
+
+    background: rgba(11, 15, 23, 0.94);
+    backdrop-filter: blur(16px);
+}
+
+.movie-header h1 {
+    margin: 0;
+
+    font-family: var(
+        --font-heading,
+        "Poppins",
+        sans-serif
+    );
+
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.movie-back,
+.movie-header-bookmark {
+    display: grid;
+    place-items: center;
+
+    width: 44px;
+    height: 44px;
+
+    border: 0;
+    border-radius: 50%;
+
+    background: transparent;
+    color: var(--movie-text);
+
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.movie-header-bookmark.selected {
+    color: var(--movie-orange);
+}
+
+
+/* ========================================
+   HERO / BANNER
+======================================== */
+
+.movie-hero {
+    position: relative;
+
+    width: 100%;
+    height: 230px;
+
+    overflow: hidden;
+}
+
+.movie-backdrop {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+}
+
+.movie-hero-gradient {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(11, 15, 23, 0.05) 30%,
+            rgba(11, 15, 23, 0.5) 72%,
+            #0B0F17 100%
+        );
+}
+
+
+/* ========================================
+   INFORMAÇÕES PRINCIPAIS
+======================================== */
+
+.movie-main-info {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 17px;
+    align-items: end;
+
+    margin-top: -78px;
+    padding: 0 20px;
+
+    z-index: 3;
+}
+
+.movie-detail-poster {
+    width: 120px;
+    aspect-ratio: 2 / 3;
+
+    object-fit: cover;
+
+    border: 1px solid
+        rgba(255, 255, 255, 0.12);
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 10px 30px
+        rgba(0, 0, 0, 0.45);
+}
+
+.movie-info-text {
+    min-width: 0;
+    padding-bottom: 4px;
+}
+
+.movie-info-text h2 {
+    margin: 0 0 7px;
+
+    font-family: var(
+        --font-heading,
+        "Poppins",
+        sans-serif
+    );
+
+    font-size: 26px;
+    line-height: 1.15;
+
+    letter-spacing: -0.7px;
+}
+
+.movie-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+
+    color: var(--movie-muted);
+
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.movie-age-rating {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    margin-top: 9px;
+
+    color: var(--movie-muted);
+    font-size: 11px;
+}
+
+.age-badge {
+    display: grid;
+    place-items: center;
+
+    min-width: 25px;
+    height: 25px;
+
+    padding: 0 5px;
+
+    border-radius: 6px;
+
+    background: #E7A927;
+    color: #0B0F17;
+
+    font-weight: 700;
+}
+
+
+/* ========================================
+   AVALIAÇÕES
+======================================== */
+
+.movie-ratings {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+
+    margin-top: 24px;
+    padding: 0 20px;
+}
+
+.rating-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    min-height: 120px;
+    padding: 14px;
+
+    border: 1px solid
+        rgba(80, 111, 151, 0.32);
+
+    border-radius: 14px;
+
+    background: linear-gradient(
+        145deg,
+        #122033,
+        #101A29
+    );
+}
+
+.rating-source {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    min-height: 25px;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.rating-source.imdb {
+    width: fit-content;
+
+    padding: 3px 6px;
+
+    border-radius: 4px;
+
+    background: #F5C518;
+    color: #111111;
+}
+
+.rating-source.rotten {
+    color: var(--movie-text);
+}
+
+.rating-value {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+
+    margin-top: 12px;
+
+    font-size: 14px;
+    color: var(--movie-muted);
+}
+
+.rating-value strong {
+    color: var(--movie-text);
+
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.rating-star {
+    color: var(--movie-orange);
+    font-size: 21px;
+}
+
+.rating-description {
+    margin-top: 5px;
+
+    color: var(--movie-muted);
+    font-size: 10px;
+}
+
+
+/* ========================================
+   AÇÕES
+======================================== */
+
+.movie-actions {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 10px;
+
+    margin-top: 18px;
+    padding: 0 20px;
+}
+
+.trailer-button,
+.list-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    min-height: 52px;
+
+    border-radius: 13px;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.trailer-button {
+    border: 0;
+
+    background: var(--movie-orange);
+    color: #FFFFFF;
+}
+
+.list-button {
+    border: 1px solid var(--movie-orange);
+
+    background: transparent;
+    color: var(--movie-text);
+}
+
+.list-button.selected {
+    background:
+        rgba(255, 107, 0, 0.12);
+
+    color: var(--movie-orange);
+}
+
+
+/* ========================================
+   CONTEÚDO
+======================================== */
+
+.movie-content-section {
+    margin-top: 30px;
+    padding: 0 20px;
+}
+
+.movie-content-section h2 {
+    margin: 0 0 10px;
+
+    font-family: var(
+        --font-heading,
+        "Poppins",
+        sans-serif
+    );
+
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.movie-synopsis {
+    display: -webkit-box;
+
+    margin: 0;
+
+    overflow: hidden;
+
+    color: var(--movie-muted);
+
+    font-size: 14px;
+    line-height: 1.65;
+
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+
+    line-clamp: 4;
+}
+
+.movie-synopsis.expanded {
+    display: block;
+}
+
+.text-action {
+    margin-top: 8px;
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+    color: var(--movie-orange);
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+/* ========================================
+   ELENCO
+======================================== */
+
+.movie-section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.movie-section-heading .text-action {
+    flex-shrink: 0;
+    margin-top: 0;
+
+    font-size: 11px;
+}
+
+.cast-list {
+    display: grid;
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 9px;
+}
+
+.cast-member {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 52px;
+    padding: 8px;
+
+    border: 1px solid
+        rgba(80, 111, 151, 0.25);
+
+    border-radius: 12px;
+
+    background: #121E2E;
+
+    color: #E6EDF6;
+
+    font-size: 12px;
+    line-height: 1.35;
+
+    text-align: center;
+}
+
+
+/* ========================================
+   INFORMAÇÕES ADICIONAIS
+======================================== */
+
+.movie-details dl {
+    display: flex;
+    flex-direction: column;
+
+    margin: 0;
+}
+
+.movie-details dl div {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 12px;
+
+    padding: 11px 0;
+
+    border-bottom: 1px solid
+        rgba(148, 163, 184, 0.12);
+}
+
+.movie-details dt {
+    color: var(--movie-muted);
+    font-size: 12px;
+}
+
+.movie-details dd {
+    margin: 0;
+
+    color: var(--movie-text);
+
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+
+/* ========================================
+   NAVEGAÇÃO INFERIOR
+======================================== */
+
+.movie-screen .bottom-nav {
+    position: fixed;
+
+    z-index: 40;
+
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    min-height: 76px;
+
+    padding:
+        8px
+        8px
+        calc(
+            8px +
+            env(safe-area-inset-bottom)
+        );
+
+    border-top: 1px solid
+        rgba(80, 111, 151, 0.4);
+
+    background:
+        rgba(8, 17, 31, 0.97);
+
+    backdrop-filter: blur(16px);
+}
+
+.movie-screen .nav-item {
+    display: flex;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    min-width: 0;
+
+    border-radius: 10px;
+
+    color: #9BAFCB;
+
+    font-size: 11px;
+
+    text-decoration: none;
+}
+
+.movie-screen .nav-item.active {
+    color: var(--movie-orange);
+}
+
+
+/* ========================================
+   ACESSIBILIDADE
+======================================== */
+
+.movie-screen button:focus-visible,
+.movie-screen a:focus-visible {
+    outline: 2px solid var(--movie-orange);
+    outline-offset: 3px;
+}
+
+
+/* ========================================
+   TELAS MAIORES
+======================================== */
+
+@media (min-width: 500px) {
+
+    .movie-screen {
+        max-width: 600px;
+
+        margin: 0 auto;
+
+        border-right: 1px solid
+            rgba(148, 163, 184, 0.12);
+
+        border-left: 1px solid
+            rgba(148, 163, 184, 0.12);
+    }
+
+    .movie-hero {
+        height: 300px;
+    }
+
+    .movie-main-info {
+        grid-template-columns: 145px 1fr;
+    }
+
+    .movie-detail-poster {
+        width: 145px;
+    }
+
+}
+
+
+/* ========================================
+   MOVIMENTO REDUZIDO
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .movie-screen *,
+    .movie-screen *::before,
+    .movie-screen *::after {
+        scroll-behavior: auto;
+        transition-duration: 0.01ms;
+    }
+
+}
+
+.rating-source.rotten > span {
+    font-size: 22px;
+    line-height: 1;
+}

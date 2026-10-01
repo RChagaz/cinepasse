@@ -1,6 +1,7 @@
 
 import { renderLogin } from "../views/login.js";
 import { renderHome } from "../views/home.js";
+import { renderMovie } from "../views/movie.js";
 
 function renderPlaceholder(title, description) {
     const app = document.querySelector("#app");
@@ -74,10 +75,7 @@ export function router() {
             break;
 
         case "/movie":
-            renderPlaceholder(
-                "Detalhes do filme",
-                "Aqui serão exibidos o pôster, a sinopse, as avaliações e as críticas."
-            );
+            renderMovie();
             break;
 
         case "/results":

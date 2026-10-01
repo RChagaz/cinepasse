@@ -51,8 +51,7 @@ function icon(name, size = 24) {
 
 function movieCard(movie) {
     return `
-        <a class="movie-card" href="/movie?id=${movie.id}"
-           aria-label="Ver detalhes de ${movie.title}">
+        <article class="movie-card">
             <div class="movie-poster">
                 <img
                     src="/images/posters/${movie.art}.webp"
@@ -67,7 +66,7 @@ function movieCard(movie) {
                 <span class="rating-star">★</span>
                 ${movie.rating}
             </span>
-        </a>
+        </article>
     `;
 }
 
@@ -169,10 +168,9 @@ export function renderHome() {
                 e do tempo.
             </p>
 
-            <a href="/movie?id=interestelar"
-               class="featured-button">
-                ${icon("play", 20)}
-                <span>Assistir trailer</span>
+            <a href="/movie" class="featured-button">
+            <span>Ver detalhes</span>
+            ${icon("arrow", 20)}
             </a>
         </div>
     </div>
