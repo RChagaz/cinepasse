@@ -5,15 +5,16 @@ export const movies = [
         id: "interestelar",
         title: "Interestelar",
         year: 2014,
-        rating: "8.7",
+        rating: 8.7,
         art: "interestelar",
-        genre: "Ficção científica"
+        genre: "Ficção científica",
+        clickable: true
     },
     {
         id: "duna",
         title: "Duna",
         year: 2024,
-        rating: "8.2",
+        rating: 8.2,
         art: "duna",
         genre: "Ficção científica"
     },
@@ -21,7 +22,7 @@ export const movies = [
         id: "batman",
         title: "Batman",
         year: 2022,
-        rating: "8.5",
+        rating: 8.5,
         art: "batman",
         genre: "Ação"
     },
@@ -29,7 +30,7 @@ export const movies = [
         id: "oppenheimer",
         title: "Oppenheimer",
         year: 2023,
-        rating: "8.4",
+        rating: 8.4,
         art: "oppenheimer",
         genre: "Drama"
     },
@@ -37,7 +38,7 @@ export const movies = [
         id: "top-gun",
         title: "Top Gun Maverick",
         year: 2022,
-        rating: "8.3",
+        rating: 8.3,
         art: "topgun",
         genre: "Ação"
     },
@@ -45,7 +46,7 @@ export const movies = [
         id: "deadpool",
         title: "Deadpool & Wolverine",
         year: 2024,
-        rating: "8.1",
+        rating: 8.1,
         art: "deadpool",
         genre: "Ação"
     },
@@ -53,7 +54,7 @@ export const movies = [
         id: "divertida-mente",
         title: "Divertida Mente 2",
         year: 2024,
-        rating: "8.0",
+        rating: 8.0,
         art: "insideout",
         genre: "Comédia"
     },
@@ -61,7 +62,7 @@ export const movies = [
         id: "gladiador",
         title: "Gladiador II",
         year: 2024,
-        rating: "7.8",
+        rating: 7.8,
         art: "gladiator",
         genre: "Ação"
     },
@@ -69,18 +70,20 @@ export const movies = [
         id: "godzilla",
         title: "Godzilla e Kong",
         year: 2024,
-        rating: "7.6",
+        rating: 7.6,
         art: "godzilla",
         genre: "Ação"
     }
 ];
 
+
 export const featuredMovie = {
     id: "interestelar",
     title: "Interestelar",
+
     year: 2014,
     duration: "2h 49min",
-    genre: "Ficção científica",
+    mainGenre: "Ficção científica",
 
     ageRating: "12",
     ageDescription: "Não recomendado para menores de 12 anos",
@@ -90,11 +93,13 @@ export const featuredMovie = {
 
     imdb: {
         score: "8,7",
-        maxScore: "/10"
+        maxScore: "/10",
+        description: "Avaliação dos usuários"
     },
 
     rottenTomatoes: {
-        score: "73%"
+        score: "73%",
+        description: "Tomatometer"
     },
 
     synopsis:
@@ -113,7 +118,5 @@ export const featuredMovie = {
         "Ficção científica",
         "Drama",
         "Aventura"
-    ],
-
-    releaseYear: 2014
+    ]
 };
