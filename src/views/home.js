@@ -143,10 +143,15 @@ export function renderHome() {
                        aria-label="Buscar filmes">
                         ${icon("search", 25)}
                     </a>
-                    <a href="/profile" class="profile-button"
-                       aria-label="Meu perfil">
-                        ${icon("user", 24)}
-                    </a>
+
+                    
+                    <button
+                    type="button"
+                    class="profile-button profile-button-disabled"
+                    aria-label="Meu perfil - recurso não implementado neste protótipo"
+                    >
+                    ${icon("user", 24)}
+                    </button>
                 </div>
             </header>
 
@@ -190,16 +195,7 @@ export function renderHome() {
     </div>
 
 </section>
-
-                <div class="carousel-indicators"
-                     aria-label="Destaque 1 de 4">
-                    <span class="indicator active"></span>
-                    <span class="indicator"></span>
-                    <span class="indicator"></span>
-                    <span class="indicator"></span>
-                </div>
-            </section>
-
+     
             <section class="home-section">
                 ${sectionHeader("Em alta agora")}
                 <div class="movie-carousel">
