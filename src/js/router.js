@@ -4,6 +4,7 @@ import { renderHome } from "../views/home.js";
 import { renderMovie } from "../views/movie.js";
 import { renderSearch } from "../views/search.js";
 import { renderResults } from "../views/results.js";
+import { renderFilters } from "../views/filters.js";
 
 function renderPlaceholder(title, description) {
     const app = document.querySelector("#app");
@@ -67,10 +68,7 @@ export function router() {
             break;
 
         case "/filters":
-            renderPlaceholder(
-                "Filtros",
-                "Em breve você poderá encontrar filmes por gênero, avaliação e outros critérios."
-            );
+            renderFilters();
             break;
 
         case "/movie":
