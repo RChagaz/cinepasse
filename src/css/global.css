@@ -86,3 +86,15 @@ svg {
     min-height: 100vh;
     min-height: 100svh;
 }
+
+.nav-item-disabled {
+    border: 0;
+    padding: 0;
+    background: transparent;
+    color: #9BAFCB;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: default;
+    appearance: none;
+    -webkit-appearance: none;
+}

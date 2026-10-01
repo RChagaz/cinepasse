@@ -108,10 +108,16 @@ function renderBottomNav() {
                 ${icon("sliders", 25)}
                 <span>Filtros</span>
             </a>
-            <a href="/list" class="nav-item">
-                ${icon("bookmark", 25)}
-                <span>Minha Lista</span>
-            </a>
+
+            <button
+            type="button"
+            class="nav-item nav-item-disabled"
+            aria-label="Minha Lista - recurso não implementado neste protótipo"
+            >
+            ${icon("bookmark", 25)}
+            <span>Minha Lista</span>
+            </button>
+
         </nav>
     `;
 }
