@@ -29,34 +29,80 @@ O CinePasse foi desenvolvido como projeto acadêmico, colocando em prática conc
 - 🎬 Página com informações detalhadas de filme
 - 📱 Interface responsiva para diferentes tamanhos de tela
 
+---
+
 ## 🖼️ Interfaces
 
-### Login
+### 🔐 Login
 
-![Interface de Login](docs/screenshots/login.png)
-![Interface de Login com Erro](docs/screenshots/loginerro.png)
+<table>
+  <tr>
+    <td align="center"><strong>Login</strong></td>
+    <td align="center"><strong>Validação de erro</strong></td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="docs/screenshots/login.png" alt="Interface de Login" width="300">
+    </td>
+    <td align="center">
+      <img src="docs/screenshots/loginerro.png" alt="Interface de Login com erro" width="300">
+    </td>
+  </tr>
+</table>
 
-### Início
+### 🏠 Início
 
-![Interface Inicial](docs/screenshots/home.png)
+<p align="center">
+  <img src="docs/screenshots/home.png" alt="Interface inicial do CinePasse" width="300">
+</p>
 
-### Detalhes do filme
+### 🎬 Detalhes do filme
 
-![Interface de Detalhes](docs/screenshots/movie.png)
-![Interface de Detalhes Continuação](docs/screenshots/movie2.png)
+<table>
+  <tr>
+    <td align="center"><strong>Informações principais</strong></td>
+    <td align="center"><strong>Sinopse e informações</strong></td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="docs/screenshots/movie.png" alt="Informações principais do filme" width="300">
+    </td>
+    <td align="center">
+      <img src="docs/screenshots/movie2.png" alt="Sinopse e informações do filme" width="300">
+    </td>
+  </tr>
+</table>
 
-### Busca
+### 🔎 Busca
 
-![Interface de Busca](docs/screenshots/search.png)
+<p align="center">
+  <img src="docs/screenshots/search.png" alt="Interface de busca" width="300">
+</p>
 
-### Resultados
+### 🎞️ Resultados
 
-![Interface de Resultados Específicos](docs/screenshots/results.png)
-![Interface de Resultados Geral](docs/screenshots/allresults.png)
+<table>
+  <tr>
+    <td align="center"><strong>Resultado da busca</strong></td>
+    <td align="center"><strong>Todos os filmes</strong></td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="docs/screenshots/results.png" alt="Resultados de uma pesquisa" width="300">
+    </td>
+    <td align="center">
+      <img src="docs/screenshots/allresults.png" alt="Todos os filmes disponíveis" width="300">
+    </td>
+  </tr>
+</table>
 
-### Filtros
+### 🎚️ Filtros
 
-![Interface de Filtros](docs/screenshots/filters.png)
+<p align="center">
+  <img src="docs/screenshots/filters.png" alt="Interface de filtros" width="300">
+</p>
+
+---
 
 ## 🛠️ Tecnologias utilizadas
 
@@ -67,16 +113,73 @@ O CinePasse foi desenvolvido como projeto acadêmico, colocando em prática conc
 - Git
 - GitHub
 
+---
+
 ## 📂 Estrutura do projeto
 
 ```text
 cinepasse/
+├── docs/
+│   └── screenshots/
 ├── public/
 │   └── images/
 ├── src/
 │   ├── css/
 │   ├── js/
 │   └── views/
+├── .gitignore
 ├── index.html
 ├── package.json
+├── package-lock.json
 └── README.md
+```
+
+---
+
+## 🚀 Projeto online
+
+O **CinePasse está disponível online** através do Render.
+
+> 🔗 Acesse o projeto pelo link disponível na seção **About** deste repositório.
+
+---
+
+## 💻 Executando o projeto localmente
+
+### 1. Clone o repositório
+
+```bash
+git clone URL-DO-SEU-REPOSITORIO
+```
+
+### 2. Entre na pasta do projeto
+
+```bash
+cd cinepasse
+```
+
+### 3. Instale as dependências
+
+```bash
+npm install
+```
+
+### 4. Inicie o servidor de desenvolvimento
+
+```bash
+npm run dev
+```
+
+Depois, acesse no navegador o endereço exibido pelo Vite no terminal.
+
+---
+
+## 🎓 Contexto acadêmico
+
+Projeto desenvolvido para fins acadêmicos, com o objetivo de aplicar conhecimentos de desenvolvimento web Front-End na construção de uma aplicação organizada, responsiva e de fácil utilização.
+
+---
+
+<p align="center">
+  🎬 <strong>CinePasse</strong> — encontre sua próxima história.
+</p>
