@@ -1,0 +1,558 @@
+/* ========================================
+   CINEPASSE - BUSCA
+======================================== */
+
+.search-screen {
+    --search-bg: var(--color-background, #0B0F17);
+    --search-surface: var(--color-surface, #1E293B);
+    --search-border: var(--color-border, #334155);
+    --search-orange: var(--color-primary, #FF6B00);
+    --search-text: var(--color-text, #F5F5F5);
+    --search-muted: var(--color-text-secondary, #AAB4C3);
+
+    min-height: 100vh;
+    min-height: 100svh;
+
+    padding-bottom: calc(
+        100px + env(safe-area-inset-bottom)
+    );
+
+    overflow-x: hidden;
+
+    background: var(--search-bg);
+    color: var(--search-text);
+}
+
+
+/* ========================================
+   CABEÇALHO
+======================================== */
+
+.search-header {
+    padding: 30px 20px 15px;
+}
+
+.search-header h1 {
+    margin: 0;
+
+    font-family: var(
+        --font-heading,
+        "Poppins",
+        sans-serif
+    );
+
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.search-header p {
+    margin: 4px 0 0;
+
+    color: var(--search-muted);
+
+    font-size: 14px;
+}
+
+
+/* ========================================
+   CAMPO DE BUSCA
+======================================== */
+
+.search-area {
+    padding: 10px 20px 5px;
+}
+
+.search-form {
+    display: grid;
+
+    grid-template-columns:
+        28px minmax(0, 1fr) 34px;
+
+    align-items: center;
+    gap: 10px;
+
+    min-height: 58px;
+
+    padding: 0 13px;
+
+    border: 1px solid #526780;
+    border-radius: 17px;
+
+    background: #132033;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.search-form:focus-within {
+    border-color: var(--search-orange);
+
+    box-shadow:
+        0 0 0 2px
+        rgba(255, 107, 0, 0.12);
+}
+
+.search-field-icon {
+    display: grid;
+    place-items: center;
+
+    color: #93A8C1;
+}
+
+.search-form input {
+    width: 100%;
+    min-width: 0;
+
+    border: 0;
+    outline: 0;
+
+    background: transparent;
+
+    color: var(--search-text);
+
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.search-form input::placeholder {
+    color: #8493A8;
+}
+
+.search-form input::-webkit-search-cancel-button {
+    display: none;
+}
+
+.clear-search {
+    display: grid;
+    place-items: center;
+
+    width: 32px;
+    height: 32px;
+
+    padding: 0;
+
+    border: 0;
+    border-radius: 50%;
+
+    background: #33465C;
+    color: #B9C6D6;
+
+    cursor: pointer;
+}
+
+.clear-search[hidden] {
+    display: none;
+}
+
+
+/* ========================================
+   SEÇÕES
+======================================== */
+
+.search-section {
+    margin-top: 28px;
+}
+
+.search-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    padding: 0 20px;
+    margin-bottom: 13px;
+}
+
+.search-section-header h2 {
+    margin: 0;
+
+    font-family: var(
+        --font-heading,
+        "Poppins",
+        sans-serif
+    );
+
+    font-size: 19px;
+    font-weight: 600;
+
+    letter-spacing: -0.4px;
+}
+
+.clear-recents {
+    flex-shrink: 0;
+
+    padding: 5px 0;
+
+    border: 0;
+
+    background: transparent;
+    color: var(--search-orange);
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.search-see-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+
+    flex-shrink: 0;
+
+    color: var(--search-orange);
+
+    font-size: 12px;
+    font-weight: 600;
+
+    text-decoration: none;
+}
+
+
+/* ========================================
+   PESQUISAS RECENTES
+======================================== */
+
+.recent-searches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+
+    padding: 0 20px;
+}
+
+.recent-search {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    min-height: 42px;
+
+    padding: 0 14px;
+
+    border: 1px solid
+        rgba(100, 130, 165, 0.42);
+
+    border-radius: 22px;
+
+    background: #111E2E;
+
+    color: #E2E8F0;
+
+    font-family: inherit;
+    font-size: 12px;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+.recent-search svg {
+    color: #8EA3BD;
+}
+
+.recent-search:hover {
+    border-color: var(--search-orange);
+
+    background: #17263A;
+}
+
+.recent-section.empty {
+    display: none;
+}
+
+
+/* ========================================
+   SUGESTÕES
+======================================== */
+
+.search-suggestions {
+    display: flex;
+    gap: 12px;
+
+    padding: 0 20px 8px;
+
+    overflow-x: auto;
+
+    overscroll-behavior-x: contain;
+
+    scroll-snap-type: x mandatory;
+
+    scrollbar-width: none;
+
+    -webkit-overflow-scrolling: touch;
+}
+
+.search-suggestions::-webkit-scrollbar {
+    display: none;
+}
+
+.search-movie-card {
+    display: flex;
+    flex: 0 0 112px;
+    min-width: 0;
+
+    flex-direction: column;
+
+    scroll-snap-align: start;
+}
+
+.search-movie-poster {
+    width: 100%;
+
+    aspect-ratio: 2 / 3;
+
+    overflow: hidden;
+
+    border: 1px solid
+        rgba(255, 255, 255, 0.09);
+
+    border-radius: 10px;
+
+    background: var(--search-surface);
+}
+
+.search-movie-poster img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.search-movie-card strong {
+    margin-top: 8px;
+
+    overflow: hidden;
+
+    color: var(--search-text);
+
+    font-size: 12px;
+    font-weight: 600;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.search-movie-card > span {
+    margin-top: 3px;
+
+    overflow: hidden;
+
+    color: var(--search-muted);
+
+    font-size: 11px;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/* ========================================
+   CATEGORIAS
+======================================== */
+
+.search-categories {
+    display: grid;
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 10px;
+
+    padding: 0 20px;
+}
+
+.search-category {
+    display: grid;
+
+    grid-template-columns:
+        34px minmax(0, 1fr) 20px;
+
+    align-items: center;
+    gap: 9px;
+
+    min-height: 67px;
+
+    padding: 10px 13px;
+
+    border: 1px solid
+        rgba(80, 111, 151, 0.35);
+
+    border-radius: 14px;
+
+    background: linear-gradient(
+        145deg,
+        #12243A,
+        #101B2C
+    );
+
+    color: var(--search-text);
+
+    text-decoration: none;
+
+    transition:
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.search-category:hover {
+    transform: translateY(-2px);
+
+    border-color: var(--search-orange);
+}
+
+.category-icon {
+    display: grid;
+    place-items: center;
+
+    color: var(--search-orange);
+}
+
+.category-name {
+    min-width: 0;
+
+    font-size: 12px;
+    line-height: 1.25;
+}
+
+.category-arrow {
+    display: grid;
+    place-items: center;
+
+    color: #91A5BD;
+}
+
+
+/* ========================================
+   MENU INFERIOR
+======================================== */
+
+.search-screen .bottom-nav {
+    position: fixed;
+
+    z-index: 40;
+
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    min-height: 76px;
+
+    padding:
+        8px
+        8px
+        calc(
+            8px +
+            env(safe-area-inset-bottom)
+        );
+
+    border-top: 1px solid
+        rgba(80, 111, 151, 0.4);
+
+    background:
+        rgba(8, 17, 31, 0.97);
+
+    backdrop-filter: blur(16px);
+}
+
+.search-screen .nav-item {
+    display: flex;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    min-width: 0;
+
+    border-radius: 10px;
+
+    color: #9BAFCB;
+
+    font-size: 11px;
+
+    text-decoration: none;
+}
+
+.search-screen .nav-item.active {
+    color: var(--search-orange);
+}
+
+
+/* ========================================
+   ACESSIBILIDADE
+======================================== */
+
+.search-screen button:focus-visible,
+.search-screen a:focus-visible,
+.search-screen input:focus-visible {
+    outline: 2px solid var(--search-orange);
+    outline-offset: 3px;
+}
+
+
+/* ========================================
+   TELAS MAIORES
+======================================== */
+
+@media (min-width: 500px) {
+
+    .search-screen {
+        max-width: 600px;
+
+        margin: 0 auto;
+
+        border-right: 1px solid
+            rgba(148, 163, 184, 0.12);
+
+        border-left: 1px solid
+            rgba(148, 163, 184, 0.12);
+    }
+
+    .search-movie-card {
+        flex-basis: 125px;
+    }
+
+}
+
+
+/* ========================================
+   TELAS MUITO PEQUENAS
+======================================== */
+
+@media (max-width: 360px) {
+
+    .search-categories {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* ========================================
+   MOVIMENTO REDUZIDO
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .search-screen *,
+    .search-screen *::before,
+    .search-screen *::after {
+        scroll-behavior: auto;
+        transition-duration: 0.01ms;
+    }
+
+}

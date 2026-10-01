@@ -2,6 +2,7 @@
 import { renderLogin } from "../views/login.js";
 import { renderHome } from "../views/home.js";
 import { renderMovie } from "../views/movie.js";
+import { renderSearch } from "../views/search.js";
 
 function renderPlaceholder(title, description) {
     const app = document.querySelector("#app");
@@ -61,10 +62,7 @@ export function router() {
             break;
 
         case "/search":
-            renderPlaceholder(
-                "Buscar filmes",
-                "Aqui você poderá pesquisar filmes e séries."
-            );
+            renderSearch();
             break;
 
         case "/filters":
